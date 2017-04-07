@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CrewWhitelistApps.Models.CrewScheduleModel>
+
+@{
+    ViewBag.Title = "Dashborad Administrator";
+    Layout = "~/Views/Shared/_LayoutAdminWhitelist.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idcrew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enddate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.idcrewschedule)
+            <td>
+                @Html.DisplayFor(modelItem => item.idcrew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enddate)
+            </td>
+            <td>
+                <a href="@Url.Action("EditScheduleCrew", "Home", new { id = item.idcrewschedule})"><button class="btn btn-warning">Edit</button></a>
+                <a href="@Url.Action("DeleteScheduleCrew", "Home", new { id = item.idcrewschedule})"><button class="btn btn-danger">Delete</button></a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="7">
+            <a href="@Url.Action("CreateCrewSchedule", "Home")"><button class="btn btn-info">Create Schedule</button></a>
+        </td>
+    </tr>
+</table>

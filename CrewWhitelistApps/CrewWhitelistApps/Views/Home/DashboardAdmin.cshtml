@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CrewWhitelistApps.Models.CrewModel>
+
+@{
+    ViewBag.Title = "Dashborad Administrator";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.ViewBag.AlertMsg
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idcrew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datelist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.airport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyairways)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idcrew)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datelist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.airport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyairways)
+        </td>
+        <td>
+            <a href="@Url.Action("EditCrew", "Home", new { id = item.idcrew})"><button class="btn btn-warning">Edit</button></a>
+            <a href="@Url.Action("DeleteCrew", "Home", new { id = item.idcrew})"><button class="btn btn-danger">Delete</button></a>
+        </td>
+    </tr>
+}
+    <tr>
+        <td colspan="7">
+            <a href="@Url.Action("CreateCrew", "Home")"><button class="btn btn-info">Create New</button></a>
+        </td>
+    </tr>
+</table>

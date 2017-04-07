@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CrewWhitelistApps.Models.CrewScheduleModel>
+
+@{
+    ViewBag.Title = "Dashborad Administrator";
+    Layout = "~/Views/Shared/_LayoutAdminWhitelist.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idcrew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enddate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idcrew)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.enddate)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    <a href="@Url.Action("DashboardAdminWhitelist", "Home")"><button class="btn btn-default">Back to list</button></a>
+</div>

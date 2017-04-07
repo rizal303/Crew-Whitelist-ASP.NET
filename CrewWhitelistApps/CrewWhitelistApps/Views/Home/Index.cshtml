@@ -1,0 +1,27 @@
+﻿@model CrewWhitelistApps.Models.AdministartorModel
+
+@{
+    ViewBag.Title = "Crew Whitelist Apps";
+    Layout = "~/Views/Shared/_LoginPage.cshtml";
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "Login failed. Check your login details.");
+
+<h6>Admin Login Page</h6>
+    @Html.ValidationMessageFor(model => model.username)
+    @Html.TextBoxFor(m => m.username, new { @class = "form-control", @type= "text", @placeholder = "Username"})
+
+    @Html.ValidationMessageFor(model => model.password)
+    @Html.PasswordFor(m => m.password, new { @class = "form-control", @type = "password", @placeholder = "Password"})
+
+    @Html.ValidationMessageFor(m => m.role)
+    @Html.DropDownListFor(m => m.role, Model.roles, "- Please select a role -", new { @class = "form-control" })
+
+<div class="action">
+    <input type="submit" value="Log In" class="btn btn-primary signup"/>
+</div>  
+
+
+}
+
